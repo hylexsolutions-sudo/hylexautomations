@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hylex Automations — Make.com Automation Agency</title>
+<meta name="description" content="Hylex Automations builds Make.com blueprints and business automations for US, UK, Canada & Australia. Async-friendly, no calls required.">
+<style>
+  :root{
+    --bg:#070b14; --bg2:#0b1220; --card:#0f172a;
+    --accent:#22d3ee; --accent2:#a78bfa;
+    --text:#e2e8f0; --muted:#94a3b8; --line:#1e293b;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(7,11,20,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+  .logo{font-size:1.3rem;font-weight:800;letter-spacing:.5px}
+  .logo span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .nav-cta{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#04121a;font-weight:700;padding:10px 20px;border-radius:10px;text-decoration:none;font-size:.9rem}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:.2s}
+  .nav-links a:hover{color:var(--accent)}
+  @media(max-width:760px){.nav-links a:not(.nav-cta){display:none}}
+
+  /* HERO */
+  .hero{padding:90px 0 70px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(circle,rgba(34,211,238,.15),transparent 70%);pointer-events:none}
+  .badge{display:inline-block;border:1px solid var(--line);background:var(--bg2);color:var(--accent);padding:6px 16px;border-radius:999px;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
+  h1{font-size:clamp(2.1rem,5.5vw,3.6rem);line-height:1.15;font-weight:800;max-width:850px;margin:0 auto 20px}
+  h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:var(--muted);max-width:640px;margin:0 auto 36px;font-size:1.08rem}
+  .btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#04121a;font-weight:700;padding:15px 34px;border-radius:12px;text-decoration:none;font-size:1rem;box-shadow:0 8px 30px rgba(34,211,238,.25)}
+  .btn-ghost{border:1px solid var(--line);color:var(--text);padding:15px 34px;border-radius:12px;text-decoration:none;font-size:1rem;background:var(--bg2)}
+  .stats{display:flex;gap:48px;justify-content:center;margin-top:60px;flex-wrap:wrap}
+  .stat b{font-size:1.9rem;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat div{color:var(--muted);font-size:.85rem}
+
+  /* SECTIONS */
+  section{padding:70px 0}
+  .sec-tag{color:var(--accent);font-size:.8rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;text-align:center}
+  h2{font-size:clamp(1.6rem,3.5vw,2.3rem);text-align:center;margin-bottom:14px;font-weight:800}
+  .sec-sub{text-align:center;color:var(--muted);max-width:600px;margin:0 auto 48px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px;transition:.25s}
+  .card:hover{border-color:var(--accent);transform:translateY(-4px)}
+  .card .icon{width:48px;height:48px;border-radius:12px;background:rgba(34,211,238,.1);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:1.4rem}
+  .card h3{font-size:1.1rem;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:.93rem}
+
+  /* PROCESS */
+  .steps{counter-reset:s}
+  .step{display:flex;gap:22px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;margin-bottom:16px;align-items:flex-start}
+  .step::before{counter-increment:s;content:counter(s);min-width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04121a;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+  .step h3{font-size:1.05rem;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:.92rem}
+
+  /* PRICING */
+  .price-card{position:relative;text-align:center}
+  .price-card.hot{border-color:var(--accent);box-shadow:0 0 40px rgba(34,211,238,.12)}
+  .pop{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--accent),var(--accent2));color:#04121a;font-size:.72rem;font-weight:800;padding:4px 14px;border-radius:999px;letter-spacing:1px;text-transform:uppercase}
+  .amount{font-size:2.6rem;font-weight:800;margin:14px 0 4px}
+  .amount small{font-size:.95rem;color:var(--muted);font-weight:500}
+  .feat{list-style:none;margin:22px 0;text-align:left}
+  .feat li{padding:8px 0;color:var(--muted);font-size:.92rem;border-bottom:1px dashed var(--line)}
+  .feat li::before{content:"✓";color:var(--accent);margin-right:10px;font-weight:700}
+  .card .btn{display:block;padding:13px;border-radius:10px;text-decoration:none;font-weight:700;font-size:.95rem}
+  .btn.full{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#04121a}
+  .btn.outline{border:1px solid var(--line);color:var(--text)}
+
+  /* FAQ */
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+  summary{padding:20px 24px;cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  summary::after{content:"+";color:var(--accent);font-size:1.4rem;font-weight:400}
+  details[open] summary::after{content:"–"}
+  details p{padding:0 24px 20px;color:var(--muted);font-size:.93rem}
+
+  /* CTA / CONTACT */
+  .cta-box{background:linear-gradient(135deg,rgba(34,211,238,.12),rgba(167,139,250,.12));border:1px solid var(--line);border-radius:24px;padding:60px 30px;text-align:center}
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:40px;text-align:left}
+  .contact-item{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .contact-item b{display:block;margin-bottom:6px}
+  .contact-item a{color:var(--accent);text-decoration:none;font-size:.92rem;word-break:break-all}
+  .contact-item p{color:var(--muted);font-size:.85rem}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--muted);font-size:.85rem}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<nav><div class="wrap nav-in">
+  <div class="logo">HYLEX<span>AUTOMATIONS</span></div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact" class="nav-cta">Get a Proposal</a>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="badge">Make.com Blueprints &amp; Business Automation</div>
+  <h1>Stop Doing Work Your Software Should Do <span class="grad">Automatically</span></h1>
+  <p>Hylex Automations designs and builds Make.com blueprints that connect your CRM, email, invoices, and calendars — so your team saves 10+ hours every week. Fully async — no calls required.</p>
+  <div class="btns">
+    <a href="#contact" class="btn-primary">Get Your Free Automation Audit</a>
+    <a href="#pricing" class="btn-ghost">See Pricing</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>40+</b><div>Blueprints Built</div></div>
+    <div class="stat"><b>10+ hrs</b><div>Saved Weekly Per Client</div></div>
+    <div class="stat"><b>100%</b><div>Async — Email &amp; Loom Only</div></div>
+  </div>
+</div></header>
+
+<section id="services"><div class="wrap">
+  <div class="sec-tag">What We Build</div>
+  <h2>Make.com Blueprints That Pay for Themselves</h2>
+  <p class="sec-sub">Every workflow is custom-mapped to your business. No generic templates, no bloated retainers.</p>
+  <div class="grid">
+    <div class="card"><div class="icon">🔗</div><h3>CRM &amp; Lead Automation</h3><p>New lead → enriched → added to CRM → assigned to rep → follow-up email sent. All in under 60 seconds, zero manual work.</p></div>
+    <div class="card"><div class="icon">📧</div><h3>Email &amp; Outreach Systems</h3><p>Personalized cold outreach, follow-up sequences, and reply sorting pipelines built on Make.com with your existing tools.</p></div>
+    <div class="card"><div class="icon">🧾</div><h3>Invoicing &amp; Payments</h3><p>Auto-generate invoices on deal close, send payment reminders, and sync every payment to your accounting sheet.</p></div>
+    <div class="card"><div class="icon">📊</div><h3>Reporting Dashboards</h3><p>Sales, marketing, and ops data pulled from all your apps into one live dashboard or a daily Slack/email summary.</p></div>
+    <div class="card"><div class="icon">🔄</div><h3>Zapier → Make.com Migrations</h3><p>Cut your automation bill by up to 70%. We migrate your Zaps to Make.com with cleaner logic and better error handling.</p></div>
+    <div class="card"><div class="icon">🛒</div><h3>E-commerce Ops</h3><p>Order syncing, stock alerts, abandoned-cart follow-ups, and review requests — connected across your store and email tools.</p></div>
+  </div>
+</div></section>
+
+<section id="process"><div class="wrap">
+  <div class="sec-tag">How It Works</div>
+  <h2>Simple, Async, No Meetings</h2>
+  <p class="sec-sub">We communicate by email and short Loom videos. You never need to sit on a call.</p>
+  <div class="steps">
+    <div class="step"><div><h3>Send us your workflow problem</h3><p>Describe what eats your team's time — by email or our form. Within 24 hours you get a short Loom video showing exactly what we'd automate and why.</p></div></div>
+    <div class="step"><div><h3>Approve the blueprint &amp; fixed quote</h3><p>You get a visual Make.com blueprint map and a fixed price. No hourly billing, no surprises.</p></div></div>
+    <div class="step"><div><h3>We build, you test</h3><p>Build delivered in 3–7 days with a walkthrough video. You test it with your real data. Revisions included until it runs perfectly.</p></div></div>
+    <div class="step"><div><h3>Pay once it's working</h3><p>PayPal or card. You own the blueprint forever — with 30 days of free support after delivery.</p></div></div>
+  </div>
+</div></section>
+
+<section id="pricing"><div class="wrap">
+  <div class="sec-tag">Pricing</div>
+  <h2>Fixed Prices. No Retainers Required.</h2>
+  <p class="sec-sub">Pick a package or describe your own workflow — every project gets a fixed quote before work starts.</p>
+  <div class="grid">
+    <div class="card price-card">
+      <h3>Starter Blueprint</h3>
+      <div class="amount">$290<small> / one-time</small></div>
+      <ul class="feat">
+        <li>1 single Make.com scenario</li>
+        <li>Up to 3 app connections</li>
+        <li>Error handling + notifications</li>
+        <li>Walkthrough Loom video</li>
+        <li>7 days of support</li>
+      </ul>
+      <a href="#contact" class="btn outline">Start a Project</a>
+    </div>
+    <div class="card price-card hot">
+      <div class="pop">Most Popular</div>
+      <h3>Growth System</h3>
+      <div class="amount">$690<small> / one-time</small></div>
+      <ul class="feat">
+        <li>Up to 4 connected scenarios</li>
+        <li>Up to 8 app connections</li>
+        <li>Full workflow blueprint map</li>
+        <li>Documentation &amp; handover guide</li>
+        <li>30 days of support + revisions</li>
+      </ul>
+      <a href="#contact" class="btn full">Start a Project</a>
+    </div>
+    <div class="card price-card">
+      <h3>Custom / Ongoing</h3>
+      <div class="amount">$45<small> / hour</small></div>
+      <ul class="feat">
+        <li>Complex multi-app systems</li>
+        <li>Zapier → Make.com migrations</li>
+        <li>Team training via videos</li>
+        <li>Priority turnaround</li>
+        <li>Monthly maintenance available</li>
+      </ul>
+      <a href="#contact" class="btn outline">Describe Your Project</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <div class="sec-tag">FAQ</div>
+  <h2>Common Questions</h2>
+  <p class="sec-sub"></p>
+  <div style="max-width:760px;margin:0 auto">
+    <details open><summary>Do I need to get on a call with you?</summary><p>No. We work 100% async. All communication happens over email, with Loom video walkthroughs for proposals, progress updates, and handovers. Many clients prefer this — everything is documented in writing.</p></details>
+    <details><summary>What tools do you automate with?</summary><p>Make.com is our core platform. We connect it with Gmail, Google Sheets, Slack, HubSpot, Pipedrive, Shopify, Stripe, Airtable, Notion, and 2,000+ other apps.</p></details>
+    <details><summary>What if the automation breaks later?</summary><p>Every build includes a support window (7–30 days depending on the package). After that, you can book one-off fixes or a low-cost monthly maintenance plan.</p></details>
+    <details><summary>How do payments work?</summary><p>50% upfront to start, 50% on delivery — or pay in full on delivery for Starter projects. We accept PayPal and major cards. A simple agreement protects both sides.</p></details>
+    <details><summary>Do I own the automation after delivery?</summary><p>Yes, 100%. Everything is built inside your own Make.com account. You get full documentation and can modify it anytime.</p></details>
+    <details><summary>Which time zones do you serve?</summary><p>We work with clients in the USA, UK, Canada, and Australia. Async communication means your timezone never matters — you wake up to progress.</p></details>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <div class="cta-box">
+    <h2>Ready to Automate Your Busiest Workflow?</h2>
+    <p class="sec-sub" style="margin-bottom:0">Send one email describing your problem. Get a free Loom video audit within 24 hours — no call, no commitment.</p>
+    <div class="contact-grid">
+      <div class="contact-item"><b>Email Us</b><a href="mailto:hello@hylexautomations.com">hello@hylexautomations.com</a><p>Best way to reach us. Reply within 24 hrs.</p></div>
+      <div class="contact-item"><b>Upwork / Fiverr</b><a href="#">Hylex Automations</a><p>Prefer a marketplace? Hire us there for extra protection.</p></div>
+      <div class="contact-item"><b>LinkedIn</b><a href="#">/in/hylexautomations</a><p>Connect and message us directly.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  © 2026 Hylex Automations · Make.com Blueprints &amp; Business Automation · Serving USA, UK, Canada &amp; Australia
+</div></footer>
+
+</body>
+</html>
